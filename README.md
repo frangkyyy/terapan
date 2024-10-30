@@ -1,64 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Info User untuk login:
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Email - Password (Sebelum diproses menjadi bcrpyt) - Role
 
-## About Laravel
+admin@gmail.com - admin123 - Admin
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+richard@gmail.com - richard123 - Guru
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+linda@gmail.com - linda123 - Guru
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+agus@gmail.com - agus123 - Guru
 
-## Learning Laravel
+adrian@gmail.com - adria123 - Guru
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+tomi@gmail.com - tomi123 - Guru
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+nadus@gmail.com - nadus123 - Guru
 
-## Laravel Sponsors
+citra@gmail.com - citra123 - Guru
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+lia@gmail.com - lia123 - Guru
 
-### Premium Partners
+toby@gmail.com - toby123 - Guru
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+tika@gmail.com - tika123 - Guru
 
-## Contributing
+julius@gmail.com - julius123 - Guru
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+wakasek@gmail.com - wakasek123 - Wakasek
 
-## Code of Conduct
+jason@gmail.com - jason321 - Siswa
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+frangky@gmail.com - frangky321 - Siswa
 
-## Security Vulnerabilities
+rizky@gmail.com - rizky321 - Siswa
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+morel@gmail.com - morel321 - Siswa
 
-## License
+hendry@gmail.com - hendry321 - Siswa
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+budi@gmail.com - budi321 - Siswa
+
+guntur@gmail.com - guntur321 - Siswa
+
+bryan@gmail.com - bryan321 - Siswa
+
+rafi@gmail.com - rafi321 - Siswa
+
+david@gmail.com - david321 - Siswa
+
+dhea@gmail.com - dhea321 - Siswa
+
+novita@gmail.com - novita321 - Siswa
+
+anita@gmail.com - anita321 - Siswa
+
+virna@gmail.com - virna321 - Siswa
+
+dikki@gmail.com - dikki321 - Siswa
+
+saputra@gmail.com - saputra321 - Siswa
+
+adhit@gmail.com - adhit321 - Siswa
+
+leli@gmail.com - leli321 - Siswa
+
+suci@gmail.com - suci321 - Siswa
+
+cahyani@gmail.com - cahyani321 - Siswa
+
+margareth@gmail.com - margareth321 - Siswa
+
+josephine@gmail.com - josephine321 - Siswa
+
+laura@gmail.com - laura321 - Siswa
+
+steve@gmail.com - steve321 - Siswa
+
+jacob@gmail.com - jacob321 - Siswa
+
+fabio@gmail.com - fabio321 - Siswa
+
+angel@gmail.com - angel321 - Siswa
+
+devi@gmail.com - devi321 - Siswa
+
+alvin@gmail.com - alvin321 - Siswa
+
+vincent@gmail.com - vincent321 - Siswa
+
+
