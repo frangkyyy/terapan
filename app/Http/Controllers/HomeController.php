@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-        return view('wakasek.index');
+        return view('admin.dashboard');
     }
 }
