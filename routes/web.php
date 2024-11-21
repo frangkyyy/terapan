@@ -38,9 +38,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('datauser/{role}', [UserController::class, 'loadAllUsers'])->name('user');
     Route::get('datauser-add-{role}', [UserController::class, 'loadAddForm']);
+    Route::post('datauser-add-{role}', [UserController::class, 'AddUser'])->name('AddUser');
     Route::get('edit-datauser/{id}/{role}', [UserController::class, 'loadEditForm'])->name('edit-user');
     Route::put('edit-datauser/{id}/{role}', [UserController::class, 'EditUser'])->name('EditUser');
     Route::get('delete-datauser/{id}/{role}', [UserController::class, 'deleteUser'])->name('user.delete');
+    Route::get('search-datauser/{role}', [UserController::class, 'search'])->name('users.search');
 });
 
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login']);
