@@ -35,6 +35,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dataperiode', [\App\Http\Controllers\PeriodeController::class, 'index'])->name('data-periode');
     Route::get('/periodeedit/{id_periode}', [\App\Http\Controllers\PeriodeController::class, 'edit'])->name('periode-edit');
+
+    Route::get('datauser/{role}', [UserController::class, 'loadAllUsers'])->name('user');
+    Route::get('datauser-add-{role}', [UserController::class, 'loadAddForm']);
+    Route::get('edit-datauser/{id}/{role}', [UserController::class, 'loadEditForm'])->name('edit-user');
+    Route::put('edit-datauser/{id}/{role}', [UserController::class, 'EditUser'])->name('EditUser');
+    Route::get('delete-datauser/{id}/{role}', [UserController::class, 'deleteUser'])->name('user.delete');
 });
 
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login']);
