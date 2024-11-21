@@ -38,7 +38,7 @@ class UserController extends Controller
 
     public function loadAddForm($role){
         $all_users = User::where('role', $role)->get();;
-        return view('admin.add-user', compact('all_users', 'role'));
+        return view('admin.adddatauser', compact('all_users', 'role'));
     }
 
     public function AddUser(Request $request)
@@ -64,9 +64,9 @@ class UserController extends Controller
             $new_user->password = bcrypt($request->password); // Hash password before saving
             $new_user->save();
 
-            return redirect('/admin/datauser/' . $request->role)->with('success', 'Data Added Successfully');
+            return redirect('datauser/' . $request->role)->with('success', 'Data Added Successfully');
         } catch (\Exception $e) {
-            return redirect('/admin/datauser')->with('fail', $e->getMessage());
+            return redirect('datauser/')->with('fail', $e->getMessage());
         }
     }
 
@@ -74,7 +74,7 @@ class UserController extends Controller
     public function loadEditForm($id, $role){
             $users = User::findOrFail($id);
 
-            return view('admin.edit-user', compact('users', 'role'));
+            return view('admin.editdatauser', compact('users', 'role'));
 
     }
 
@@ -106,9 +106,9 @@ class UserController extends Controller
 
             $user->save();
 
-            return redirect('/admin/datauser/' . $role)->with('success', 'Updated Successfully');
+            return redirect('datauser/admin' . $role)->with('success', 'Updated Successfully');
         } catch (\Exception $e) {
-            return redirect('/admin/datauser/' . $role)->with('fail', $e->getMessage());
+            return redirect('datauser/admin' . $role)->with('fail', $e->getMessage());
         }
     }
 
