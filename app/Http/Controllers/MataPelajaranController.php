@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MataPelajaran;
+use App\Models\Periode;
 use Illuminate\Http\Request;
 
 class MataPelajaranController extends Controller
@@ -36,10 +37,16 @@ class MataPelajaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexdatajadwalmapel()
+    public function indexdatajadwalmapel(Request $request)
     {
+        // Jika ada permintaan 'periode' dari request, filter berdasarkan itu
+        if ($request->has('periode')) {
+            $mapels = MataPelajaran::where('id_periode', $request->input('periode'))->get();
+        }
+
         return view('wakasek.datajadwalmapel', [
             'mapels' => MataPelajaran::all(),
+            'periodes' => Periode::all(), // Ambil semua data dari tabel periode
         ]);
     }
 
@@ -80,7 +87,7 @@ class MataPelajaranController extends Controller
             'id_periode' => 'GNP2425', // Menambahkan id_periode secara otomatis
         ]);
 
-        return redirect()->route('data-mapel')->with('success', 'Data Mata Pelajaran berhasil ditambahkan!');
+        return redirect()->route('data-jadwalmapel')->with('success', 'Data Mata Pelajaran berhasil ditambahkan!');
     }
 
     /**
@@ -132,7 +139,7 @@ class MataPelajaranController extends Controller
             'kelas' => $request->kelas,
         ]);
 
-        return redirect()->route('data-mapel');
+        return redirect()->route('data-periode');
     }
 
     /**
