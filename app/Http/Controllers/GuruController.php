@@ -8,6 +8,6 @@ class GuruController extends Controller
 {
     public function index() {
         $user = auth()->user();
-        return view('DataNilaiSiswa', compact('user'));
+        return view('Dashboard', compact('user'));
     }
 }

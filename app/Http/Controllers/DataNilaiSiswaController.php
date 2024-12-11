@@ -70,7 +70,7 @@ class DataNilaiSiswaController extends Controller
     public function edit(string $id)
     {
         $dat = DataNilaiSiswa::findOrFail($id);
-        return view('Edit-DataNilaiSiswa', compact('dat'));
+        return view('guru.Edit-DataNilaiSiswa', compact('dat'));
     }
 
     /**
@@ -96,7 +96,7 @@ class DataNilaiSiswaController extends Controller
             'nilai' => $request->nilai,
         ]);
 
-        return redirect()->route('datanilaisiswa')->with('success', 'Data berhasil diupdate.');
+        return redirect()->route('guru.datanilaisiswa')->with('success', 'Data berhasil diupdate.');
     }
 
     /**
