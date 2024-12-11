@@ -42,7 +42,7 @@ Route::get('', function () {
 });  
 
 Route::group(['middleware' => ['isAdmin','auth'],'prefix' => 'admin', 'as' => 'admin.'], function() {
-    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard.index');
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
