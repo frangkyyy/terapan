@@ -27,6 +27,11 @@
                             @method('PUT')
 
                             <div class="form-group">
+                                <label for="nrp">Nrp</label>
+                                <input type="text" name="nrp" class="form-control" value="{{ old('nrp', $user->nrp) }}" required>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="name">Nama</label>
                                 <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
                             </div>
@@ -35,12 +40,12 @@
                                 <label for="email">Email</label>
                                 <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
                             </div>
-
+                            
                             <div class="form-group">
                                 <label for="roles">Role</label><br>
                                 @foreach ($roles as $role)
                                     <label>
-                                        <input type="checkbox" name="roles[]" value="{{ $role->id }}"> {{ $role->name }}
+                                        <input type="checkbox" name="roles[]" value="{{ old('roles[]', $role->id) }}"> {{ $role->name }}
                                     </label><br>
                                 @endforeach
                             </div>

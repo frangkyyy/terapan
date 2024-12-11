@@ -24,6 +24,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nrp' => 'required|string|max:7',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
@@ -32,6 +33,7 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
+            'nrp' => $request->nrp,
             'name' => $request->name,
             'email' => $request->email, 
             'password' => bcrypt($request->password),
@@ -52,11 +54,12 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
+            'nrp' => 'required|string|max:7',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
         ]);
 
-        $user->update($request->only('name', 'email'));
+        $user->update($request->only('nrp', 'name', 'email'));
 
         // Update roles
         $user->roles()->sync($request->roles);

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Create Data Nilai Siswa</title>
+  <title>Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,7 +14,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <style>
-     .nav-link.active {
+    .nav-link.active {
     background-color: #136ab7 !important /* Ganti #warnaBaru dengan kode warna yang Anda inginkan */
   }
   .main-sidebar {
@@ -43,7 +43,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="../dist/img/sma_logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('dist/img/smalogo.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-bold">SMAN 1 BANDUNG</span>
     </a>
 
@@ -67,27 +67,27 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('guru/Dashboard') }}" class="nav-link">
+            <a href="{{ url('/guru/Dashboard') }}"class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
+              <p class="font-weight-bold">
                 Dashboard
               </p>
             </a>
           
           </li>
           <li class="nav-item">
-            <a href="{{ url('/guru/MataPelajaran') }}"class="nav-link">
+            <a href="{{ url('/guru/MataPelajaran') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-               Mata Pelajaran
+                Mata Pelajaran
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/guru/DataNilaiSiswa') }}" class="nav-link active">
+          <a href="{{ url('/guru/DataNilaiSiswa') }}" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
-              <p class="font-weight-bold">
-                Data Nilai Siswa
+              <p>
+                Data Siswa
               </p>
             </a>
           </li>
@@ -116,59 +116,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Create Data Nilai</h1>
+            <h1>Dashboard</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
-    <div class="content">
-      <div class="card card-info card-outline">
-         <!-- Pesan Error -->
-         @if ($errors->any())
-         <div class="alert alert-danger">
-             <ul>
-                 @foreach ($errors->all() as $error)
-                     <li>{{ $error }}</li>
-                 @endforeach
-             </ul>
-         </div>
-     @endif
-     <!-- Pesan Sukses -->
-     @if (session('success'))
-         <div class="alert alert-success">
-             {{ session('success') }}
-         </div>
-     @endif
-
-        <div class="card-body">
-        <form action="{{ route('guru.simpan-datanilaisiswa') }}"   method="post">
-          {{csrf_field()}}
-            <div class="form-group">
-              <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Siswa">
-            </div>
-
-            <div class="form-group">
-              <input type="text" id="kelas" name="kelas" class="form-control" placeholder="Kelas Siswa">
-            </div>
-
-            <div class="form-group">
-              <input type="number" id="nilai" name="nilai" class="form-control" placeholder="Nilai Siswa" min=0 max=100>
-            </div>
-
-            <div class="form-group">
-             <button type="submit" class="btn btn-success">Simpan Data</button>
-            </div>
-
-            
-
-
-            
-          </form>
-        </div>
-      </div>
-    </div>
+    <section class="content">
+    
+    </section>
     <!-- /.content -->
 
     <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">

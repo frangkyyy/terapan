@@ -16,16 +16,21 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::firstOrCreate(['name' => 'admin']);
+        $roleAdmin = Role::firstOrCreate(['name' => 'admin']);
+        $roleGuru = Role::firstOrCreate(['name' => 'guru']);
+        $roleGuruWali = Role::firstOrCreate(['name' => 'guru wali']);
+        $roleWakasek = Role::firstOrCreate(['name' => 'wakasek']);
+        $roleSiswa = Role::firstOrCreate(['name' => 'siswa']);
 
         // Step 2: Create an admin user (or use an existing one)
         $admin = User::create([
-            'name' => 'Admin User',
+            'nrp' => '0000001',
+            'name' => 'Admin',
             'email' => 'admin@example.com',
             'password' => Hash::make('adminpassword'), // Use your own password
         ]);
 
         // Step 3: Assign the 'admin' role to the admin user
-        $admin->roles()->attach($role->id);
+        $admin->roles()->attach($roleAdmin->id);
     }
 }

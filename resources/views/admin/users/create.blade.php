@@ -26,6 +26,11 @@
                             @csrf
 
                             <div class="form-group">
+                                <label for="nrp">Nrp</label>
+                                <input type="text" name="nrp" class="form-control" placeholder="Nrp Pengguna" required>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="name">Nama</label>
                                 <input type="text" name="name" class="form-control" placeholder="Nama Pengguna" required>
                             </div>

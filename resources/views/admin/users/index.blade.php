@@ -23,10 +23,10 @@
                 <div class="card p-4">
                     <div class="card-body">
                         <a href="{{ route('admin.users.create') }}" class="btn btn-primary mb-3">Tambah Pengguna</a>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table table-bordered table-striped table-hover datatable datatable-User">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Nrp</th>
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Roles</th>
@@ -36,7 +36,7 @@
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->nrp }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
@@ -45,12 +45,16 @@
                                             @endforeach
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="post" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                            </form>
+                                            @if (!$user->roles->contains('name', 'admin'))
+                                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="post" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                    </form>
+                                            @else   
+                                                <span class="text-muted"></span>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

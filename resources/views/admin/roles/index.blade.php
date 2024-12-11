@@ -1,6 +1,7 @@
 @extends('layouts.masteradmin')
 
 @section('web-content')
+
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
@@ -23,7 +24,7 @@
                 <div class="card p-4">
                     <div class="card-body">
                         <a href="{{ route('admin.roles.create') }}" class="btn btn-primary mb-3">Tambah Role</a>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-striped table-hover datatable datatable-User">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -51,4 +52,5 @@
             </div>
         </div>
     </div>
+
 @endsection

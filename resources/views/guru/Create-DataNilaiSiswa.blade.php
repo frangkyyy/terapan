@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Data Nilai Siswa</title>
+  <title>Create Data Nilai Siswa</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -43,7 +43,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="../dist/img/sma_logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('dist/img/smalogo.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-bold">SMAN 1 BANDUNG</span>
     </a>
 
@@ -67,21 +67,13 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('/guru/Dashboard') }}" class="nav-link">
+            <a href="{{ url('guru/Dashboard') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('/guru/MataPelajaran') }}"class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-               Mata Pelajaran
-              </p>
-            </a>
           </li>
           <li class="nav-item">
             <a href="{{ url('/guru/DataNilaiSiswa') }}" class="nav-link active">
@@ -116,7 +108,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Nilai Mata Pelajaran Matematika</h1>
+            <h1>Create Data Nilai</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -125,39 +117,48 @@
     <!-- Main content -->
     <div class="content">
       <div class="card card-info card-outline">
-        <div class="card-header">
-          <div class="card-tools">
-            <a href="{{route('guru.create-datanilaisiswa')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
-            <a href="{{route('guru.cetak-datanilaisiswa')}}" target="_blank" class="btn btn-primary">Cetak Data <i class="fas fa-print"></i></a>
-
-          </div>
-        </div>
+         <!-- Pesan Error -->
+         @if ($errors->any())
+         <div class="alert alert-danger">
+             <ul>
+                 @foreach ($errors->all() as $error)
+                     <li>{{ $error }}</li>
+                 @endforeach
+             </ul>
+         </div>
+     @endif
+     <!-- Pesan Sukses -->
+     @if (session('success'))
+         <div class="alert alert-success">
+             {{ session('success') }}
+         </div>
+     @endif
 
         <div class="card-body">
-          <table class="table table-bordered">
-            <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>Kelas</th>
-              <th>Nilai</th>
-              <th>Aksi</th>
-            </tr>
-            @foreach ($dtDataNilaiSiswa as $item)
-            <tr>
-              <td>{{ $loop -> iteration }}</td>
-              <td>{{ $item -> nama }}</td>
-              <td>{{ $item -> kelas }}</td>
-              <td>{{ $item -> nilai }}</td>
-              <td>
-                  <a href="{{ url('/guru/edit-datanilaisiswa/'.$item->id) }}" class="fas fa-edit"></a>
-                  | 
-                  <a href="{{ url('/guru/delete-datanilaisiswa/'.$item->id) }}" class="fas fa-trash-alt" style="color:red"></a>
-              </td>
-            @endforeach
-           </tr>
-          </table>
+        <form action="{{ route('guru.simpan-datanilaisiswa') }}"   method="post">
+          {{csrf_field()}}
+            <div class="form-group">
+              <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Siswa">
+            </div>
+
+            <div class="form-group">
+              <input type="text" id="kelas" name="kelas" class="form-control" placeholder="Kelas Siswa">
+            </div>
+
+            <div class="form-group">
+              <input type="number" id="nilai" name="nilai" class="form-control" placeholder="Nilai Siswa" min=0 max=100>
+            </div>
+
+            <div class="form-group">
+             <button type="submit" class="btn btn-success">Simpan Data</button>
+            </div>
+
+            
+
+
+            
+          </form>
         </div>
-    
       </div>
     </div>
     <!-- /.content -->

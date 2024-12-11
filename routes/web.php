@@ -1,19 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\DataNilaiSiswaController;
@@ -61,14 +48,6 @@ Route::group(['middleware' => ['isGuru','auth'],'prefix' => 'guru', 'as' => 'gur
     Route::post('/update-datanilaisiswa/{id}', [DataNilaiSiswaController::class, 'update'])->name('update-datanilaisiswa');
     Route::get('/delete-datanilaisiswa/{id}', [DataNilaiSiswaController::class, 'destroy'])->name('delete-datanilaisiswa');
     Route::get('/cetak-datanilaisiswa', [DataNilaiSiswaController::class, 'cetakDataNilaiSiswa'])->name('cetak-datanilaisiswa');
-
-    Route::get('/MataPelajaran', function () {
-        return view('MataPelajaran');
-    });
-    
-    Route::get('/Mapel_1', function () {
-        return view('Mapel_1');
-    });
 });
 
 

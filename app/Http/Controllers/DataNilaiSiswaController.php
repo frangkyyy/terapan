@@ -13,13 +13,13 @@ class DataNilaiSiswaController extends Controller
     public function index()
     {
         $dtDataNilaiSiswa = DataNilaiSiswa::all();
-        return view('DataNilaiSiswa', compact('dtDataNilaiSiswa'));
+        return view('guru.DataNilaiSiswa', compact('dtDataNilaiSiswa'));
     }
 
     public function cetakDataNilaiSiswa()
     {
         $dtCetakDataNilaiSiswa = DataNilaiSiswa::get();
-        return view('Cetak-DataNilaiSiswa', compact('dtCetakDataNilaiSiswa'));
+        return view('guru.Cetak-DataNilaiSiswa', compact('dtCetakDataNilaiSiswa'));
     }
 
     /**
@@ -27,7 +27,7 @@ class DataNilaiSiswaController extends Controller
      */
     public function create()
     {
-        return view('Create-DataNilaiSiswa');
+        return view('guru.Create-DataNilaiSiswa');
     }
 
     /**
