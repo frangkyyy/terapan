@@ -53,7 +53,7 @@ class DataNilaiSiswaController extends Controller
             'nilai' => $request->nilai,
         ]);
 
-        return redirect()->route('datanilaisiswa')->with('success', 'Data berhasil ditambahkan.');
+        return redirect()->route('guru.datanilaisiswa')->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**

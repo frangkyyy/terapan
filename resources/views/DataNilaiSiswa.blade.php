@@ -67,7 +67,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('/Dashboard') }}" class="nav-link">
+            <a href="{{ url('/guru/Dashboard') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -76,7 +76,7 @@
           
           </li>
           <li class="nav-item">
-            <a href="{{ url('/MataPelajaran') }}"class="nav-link">
+            <a href="{{ url('/guru/MataPelajaran') }}"class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                Mata Pelajaran
@@ -84,7 +84,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/DataNilaiSiswa') }}" class="nav-link active">
+            <a href="{{ url('/guru/DataNilaiSiswa') }}" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
               <p class="font-weight-bold">
                 Data Nilai Siswa
@@ -116,8 +116,8 @@
       <div class="card card-info card-outline">
         <div class="card-header">
           <div class="card-tools">
-            <a href="{{route('create-datanilaisiswa')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
-            <a href="{{route('cetak-datanilaisiswa')}}" target="_blank" class="btn btn-primary">Cetak Data <i class="fas fa-print"></i></a>
+            <a href="{{route('guru.create-datanilaisiswa')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+            <a href="{{route('guru.cetak-datanilaisiswa')}}" target="_blank" class="btn btn-primary">Cetak Data <i class="fas fa-print"></i></a>
 
           </div>
         </div>
@@ -138,9 +138,9 @@
               <td>{{ $item -> kelas }}</td>
               <td>{{ $item -> nilai }}</td>
               <td>
-                  <a href="{{ url('edit-datanilaisiswa/'.$item->id) }}" class="fas fa-edit"></a>
+                  <a href="{{ url('/guru/edit-datanilaisiswa/'.$item->id) }}" class="fas fa-edit"></a>
                   | 
-                  <a href="{{ url('delete-datanilaisiswa/'.$item->id) }}" class="fas fa-trash-alt" style="color:red"></a>
+                  <a href="{{ url('/guru/delete-datanilaisiswa/'.$item->id) }}" class="fas fa-trash-alt" style="color:red"></a>
               </td>
             @endforeach
            </tr>

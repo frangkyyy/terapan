@@ -67,7 +67,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('/Dashboard') }}" class="nav-link">
+            <a href="{{ url('guru/Dashboard') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -76,7 +76,7 @@
           
           </li>
           <li class="nav-item">
-            <a href="{{ url('/MataPelajaran') }}"class="nav-link">
+            <a href="{{ url('/guru/MataPelajaran') }}"class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                Mata Pelajaran
@@ -84,7 +84,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/DataNilaiSiswa') }}" class="nav-link active">
+            <a href="{{ url('/guru/DataNilaiSiswa') }}" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
               <p class="font-weight-bold">
                 Data Nilai Siswa
@@ -132,7 +132,7 @@
      @endif
 
         <div class="card-body">
-        <form action="{{ route('simpan-datanilaisiswa') }}"   method="post">
+        <form action="{{ route('guru.simpan-datanilaisiswa') }}"   method="post">
           {{csrf_field()}}
             <div class="form-group">
               <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Siswa">

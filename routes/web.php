@@ -35,6 +35,7 @@ use App\Http\Controllers\DataNilaiSiswaController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\GuruController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('', function () {
@@ -42,7 +43,7 @@ Route::get('', function () {
 });  
 
 Route::group(['middleware' => ['isAdmin','auth'],'prefix' => 'admin', 'as' => 'admin.'], function() {
-    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard.index');
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
@@ -67,6 +68,7 @@ Route::group(['middleware' => ['isWakasek','auth'],'prefix' => 'wakasek', 'as' =
 });
 
 Route::group(['middleware' => ['isGuru','auth'],'prefix' => 'guru', 'as' => 'guru.'], function() {
+    Route::get('dashboard', [GuruController::class, 'index'])->name('dashboard.index');
     Route::get('/DataNilaiSiswa', [DataNilaiSiswaController::class, 'index'])->name('datanilaisiswa');
     Route::get('/Create-DataNilaiSiswa', [DataNilaiSiswaController::class, 'create'])->name('create-datanilaisiswa');
     Route::post('/simpan-datanilaisiswa', [DataNilaiSiswaController::class, 'store'])->name('simpan-datanilaisiswa');
