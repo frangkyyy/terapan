@@ -48,20 +48,39 @@ class MataPelajaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function indextambahdatamapel()
     {
-        //
+        return view('wakasek.tambahmapel', [
+            'mapels' => MataPelajaran::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_mata_pelajaran' => 'required|string|max:255|unique:mata_pelajaran,id_mata_pelajaran',
+            'nama_mata_pelajaran' => 'required|string|max:255',
+            'pengajar' => 'required|string|max:255',
+            'jam' => 'required|string|max:100',
+            'kelas' => 'required|string|max:255',
+        ]);
+
+        MataPelajaran::create([
+            'id_mata_pelajaran' => $request->id_mata_pelajaran,
+            'nama_mata_pelajaran' => $request->nama_mata_pelajaran,
+            'pengajar' => $request->pengajar,
+            'kelas' => $request->kelas,
+            'jam' => $request->jam,
+            'id_periode' => 'GNP2425', // Menambahkan id_periode secara otomatis
+        ]);
+
+        return redirect()->route('data-mapel')->with('success', 'Data Mata Pelajaran berhasil ditambahkan!');
     }
 
     /**
@@ -143,8 +162,11 @@ class MataPelajaranController extends Controller
      * @param  \App\Models\MataPelajaran  $mataPelajaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MataPelajaran $mataPelajaran)
+    public function hapusdatamapel($id_mata_pelajaran)
     {
-        //
+        $mapel = MataPelajaran::findOrFail($id_mata_pelajaran);
+        $mapel->delete();
+
+        return redirect()->route('list-mapel')->with('success', 'Pengajuan Beasiswa deleted successfully.');
     }
 }

@@ -16,9 +16,9 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->id_role != 1)
-        {
-            return redirect ('/');  
+        if (!Auth::check() || !Auth::user()->roles->contains('name', 'admin')) {
+            // If the user does not have the 'admin' role, redirect to the home page
+            return redirect('/');
         }
 
         return $next($request);

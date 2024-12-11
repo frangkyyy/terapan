@@ -20,18 +20,21 @@
         </div>
         <!-- /.content-header -->
 
-        <!-- Main content -->
-        {{--        <div class="card-footer">--}}
-        {{--            <div class="container-fluid">--}}
-        {{--                <div class="card-body">--}}
-        {{--                    <a href="#" class="btn btn-success">Pengajuan Beasiswa</a>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
         <div class="content">
             <div class="container-fluid">
                 <div class="card p-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h5 class="m-0">List Data Mata Pelajaran</h5>
+                        <a href="{{ route('mapel-tambah') }}" class="btn btn-success">
+                            Tambah Data Peserta
+                        </a>
+                    </div>
                     <div class="card-body">
                         <div class="card">
                             <div class="card-body">
@@ -56,7 +59,7 @@
                                             <td>{{ $mapel->kelas }}</td>
                                             <td>
                                                 <a href="{{ route('mapel-edit', $mapel->id_mata_pelajaran) }}" class="btn btn-primary">Edit</a>
-{{--                                                <form action="{{ route('mapel-destroy', $mapel->id_mata_pelajaran) }}" method="POST">--}}
+                                                <form action="{{ route('mapel-delete', $mapel->id_mata_pelajaran) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" data-confirm="Apakah anda yakin ingin menghapus data ini?">Delete</button>
