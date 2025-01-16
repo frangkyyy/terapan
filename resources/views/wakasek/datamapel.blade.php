@@ -57,7 +57,6 @@
                                         <th>Mata Pelajaran</th>
                                         <th>ID Periode</th>
                                         <th>Koordinator</th>
-                                        <th>Kelas</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -69,7 +68,6 @@
                                             <td>{{ $mapel->nama_mata_pelajaran }}</td>
                                             <td>{{ $mapel->id_periode }}</td>
                                             <td>{{ $mapel->pengajar }}</td>
-                                            <td>{{ $mapel->kelas }}</td>
                                             <td>
                                                 <a href="{{ route('mapel-edit', $mapel->id_mata_pelajaran) }}" class="btn btn-primary">Edit</a>
                                                 <form action="{{ route('mapel-delete', $mapel->id_mata_pelajaran) }}" method="POST">
