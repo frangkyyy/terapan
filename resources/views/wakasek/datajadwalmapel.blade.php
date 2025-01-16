@@ -36,16 +36,18 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <!-- Dropdown untuk Periode -->
+                                <!-- Tombol untuk Periode -->
                                 <div class="form-group">
-                                    <label for="periode-select">Pilih Periode:</label>
-                                    <select id="periode-select" class="form-control">
+                                    <label for="periode-buttons">Pilih Periode:</label>
+                                    <div id="periode-buttons" class="btn-group" role="group">
                                         @foreach($periodes as $periode)
-                                            <option value="{{ $periode->id_periode }}">
+                                            <button type="button"
+                                                    class="btn btn-outline-primary periode-button"
+                                                    data-periode="{{ $periode->id_periode }}">
                                                 {{ $periode->id_periode }}
-                                            </option>
+                                            </button>
                                         @endforeach
-                                    </select>
+                                    </div>
                                 </div>
 
                                 <!-- Jadwal Mata Pelajaran -->
@@ -107,32 +109,24 @@
                         // Inisialisasi DataTables
                         $('#table-pb').DataTable();
 
-                        // Filter data berdasarkan pilihan periode
-                        $('#periode-select').on('change', function () {
-                            const selectedPeriode = $(this).val();
-                            const spinner = $('#loading-spinner');
+                        // Filter data berdasarkan tombol periode
+                        $('.periode-button').on('click', function () {
+                            const selectedPeriode = $(this).data('periode');
                             const rows = $('#mapel-table-body tr');
 
-                            // Tampilkan spinner
-                            spinner.show();
+                            // Toggle tombol aktif
+                            $('.periode-button').removeClass('active btn-primary').addClass('btn-outline-primary');
+                            $(this).addClass('active btn-primary').removeClass('btn-outline-primary');
+
+                            // Tampilkan baris berdasarkan periode yang dipilih
                             rows.hide();
-
-                            // Simulasi loading
-                            setTimeout(function () {
-                                // Sembunyikan spinner
-                                spinner.hide();
-
-                                // Filter dan tampilkan baris berdasarkan periode
-                                if (selectedPeriode === '') {
-                                    rows.show(); // Tampilkan semua jika tidak ada filter
-                                } else {
-                                    rows.each(function () {
-                                        if ($(this).data('periode') === selectedPeriode) {
-                                            $(this).show();
-                                        }
-                                    });
-                                }
-                            }, 500); // Waktu loading 500ms
+                            if (selectedPeriode) {
+                                rows.each(function () {
+                                    if ($(this).data('periode') === selectedPeriode) {
+                                        $(this).show();
+                                    }
+                                });
+                            }
                         });
                     });
                 </script>
