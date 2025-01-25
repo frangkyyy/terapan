@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-blue elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="dist/img/smalogo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ asset('dist/img/smalogo.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">SMAN 1 BANDUNG</span>
     </a>
 
@@ -10,7 +10,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">Hello Wakasek</a>
@@ -35,7 +35,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('list-mapel') }}" class="nav-link {{ Request::is('listmapel') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('listmapel') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('data-mapel') }}" class="nav-link {{ Request::is('datamapel') ? 'active' : '' }}">
+                    <a href="{{ route('wakasek.data-mapel') }}" class="nav-link {{ Request::is('datamapel') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Data Mata Pelajaran
@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('data-jadwalmapel') }}" class="nav-link {{ Request::is('datajadwalmapel') ? 'active' : '' }}">
+                    <a href="{{ route('wakasek.data-jadwalmapel') }}" class="nav-link {{ Request::is('datajadwalmapel') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>
                             Data Jadwal Mapel
@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('data-periode') }}" class="nav-link {{ Request::is('dataperiode') ? 'active' : '' }}">
+                    <a href="{{ route('wakasek.data-periode') }}" class="nav-link {{ Request::is('dataperiode') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-calendar"></i>
                         <p>
                             Periode
@@ -87,7 +87,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script>
-    console.log({{Auth::user()}});
+    console.log("User Name: {{ Auth::user()->name }}");
     $(document).ready(function(){
         $('a.nav-link').click(function(){
             $('a.nav-link').removeClass("active");

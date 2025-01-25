@@ -51,8 +51,8 @@
                                             <td>{{ $periode->tahun_akademik }}</td>
                                             <td>{{ $periode->semester }}</td>
                                             <td>
-                                                <a href="{{ route('periode-edit', $periode->id_periode) }}" class="btn btn-primary">Edit</a>
-                                                {{--                                                <form action="{{ route('mapel-destroy', $mapel->id_mata_pelajaran) }}" method="POST">--}}
+                                                <a href="{{ route('wakasek.periode-edit', $periode->id_periode) }}" class="btn btn-primary">Edit</a>
+                                                {{--                                                <form action="{{ route('wakasek.mapel-destroy', $mapel->id_mata_pelajaran) }}" method="POST">--}}
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" data-confirm="Apakah anda yakin ingin menghapus data ini?">Delete</button>

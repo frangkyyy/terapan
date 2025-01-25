@@ -14,7 +14,7 @@ class CreatePeriode extends Migration
     public function up()
     {
         Schema::create('periode', function (Blueprint $table) {
-            $table->string('id')->primary(); 
+            $table->string('id_periode')->primary(); 
             $table->string('tahun_akademik');
             $table->string('semester');
             $table->timestamps();

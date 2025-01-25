@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard</title>
+  <title>Data Nilai Siswa</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -13,14 +13,6 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <style>
-    .nav-link.active {
-    background-color: #136ab7 !important /* Ganti #warnaBaru dengan kode warna yang Anda inginkan */
-  }
-  .main-sidebar {
-    background-color: #094375; /* Ganti dengan warna yang Anda inginkan */
-  }
-  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -67,27 +59,35 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('/guru/Dashboard') }}"class="nav-link active">
+            <a href="{{ url('/guru/Dashboard') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p class="font-weight-bold">
+              <p>
                 Dashboard
               </p>
             </a>
           
           </li>
           <li class="nav-item">
-            <a href="{{ url('/guru/MataPelajaran') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Mata Pelajaran
+            <a href="{{ url('/guru/scores') }}" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p class="font-weight-bold">
+                Data Nilai Siswa
               </p>
             </a>
           </li>
           <li class="nav-item">
-          <a href="{{ url('/guru/DataNilaiSiswa') }}" class="nav-link">
+            <a href="{{ url('/guru/assign-student-to-subject') }}" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Data Siswa
+              <p class="font-weight-bold">
+                Assign Siswa
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/guru/assignments') }}" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p class="font-weight-bold">
+                Assignment
               </p>
             </a>
           </li>
@@ -116,16 +116,53 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dashboard</h1>
+            <h1>Tambah Nilai Siswa</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
-    <section class="content">
-    
-    </section>
+    <form action="{{ route('scores.store') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="periode_id">Periode</label>
+            <select name="periode_id" id="periode_id" class="form-control" required>
+                <option value="" disabled selected>Pilih Periode</option>
+                @foreach($periodes as $periode)
+                    <option value="{{ $periode->id_periode }}">{{ $periode->id_periode }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="user_id">Siswa</label>
+            <select name="user_id" id="user_id" class="form-control" required>
+                <option value="" disabled selected>Pilih Siswa</option>
+                @foreach($siswas as $siswa)
+                    <option value="{{ $siswa->id }}">{{ $siswa->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="mata_pelajaran_id">Mata Pelajaran</label>
+            <select name="mata_pelajaran_id" id="mata_pelajaran_id" class="form-control" required>
+                <option value="" disabled selected>Pilih Mata Pelajaran</option>
+                @foreach($mataPelajaran as $mapel)
+                    <option value="{{ $mapel->id_mata_pelajaran }}">{{ $mapel->nama_mata_pelajaran }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="score">Nilai</label>
+            <input type="number" name="score" id="score" class="form-control" placeholder="Masukkan Nilai" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    </form>
+
     <!-- /.content -->
 
     <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">

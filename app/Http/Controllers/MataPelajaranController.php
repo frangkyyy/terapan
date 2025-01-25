@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MataPelajaran;
+use App\Models\Periode;
 use Illuminate\Http\Request;
 
 class MataPelajaranController extends Controller
@@ -36,10 +37,16 @@ class MataPelajaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexdatajadwalmapel()
+    public function indexdatajadwalmapel(Request $request)
     {
+        // Jika ada permintaan 'periode' dari request, filter berdasarkan itu
+        if ($request->has('periode')) {
+            $mapels = MataPelajaran::where('id_periode', $request->input('periode'))->get();
+        }
+
         return view('wakasek.datajadwalmapel', [
             'mapels' => MataPelajaran::all(),
+            'periodes' => Periode::all(), // Ambil semua data dari tabel periode
         ]);
     }
 
@@ -52,6 +59,7 @@ class MataPelajaranController extends Controller
     {
         return view('wakasek.tambahmapel', [
             'mapels' => MataPelajaran::all(),
+            'periodes' => Periode::all(), 
         ]);
     }
 
@@ -64,23 +72,25 @@ class MataPelajaranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_mata_pelajaran' => 'required|string|max:255|unique:mata_pelajaran,id_mata_pelajaran',
             'nama_mata_pelajaran' => 'required|string|max:255',
             'pengajar' => 'required|string|max:255',
             'jam' => 'required|string|max:100',
             'kelas' => 'required|string|max:255',
+            'id_periode' => 'required|string|max:255',
         ]);
 
+        $idMataPelajaran = 'MAPEL-' . uniqid();
+
         MataPelajaran::create([
-            'id_mata_pelajaran' => $request->id_mata_pelajaran,
+            'id_mata_pelajaran' => $idMataPelajaran,
             'nama_mata_pelajaran' => $request->nama_mata_pelajaran,
             'pengajar' => $request->pengajar,
             'kelas' => $request->kelas,
             'jam' => $request->jam,
-            'id_periode' => 'GNP2425', // Menambahkan id_periode secara otomatis
+            'id_periode' => $request->id_periode 
         ]);
 
-        return redirect()->route('data-mapel')->with('success', 'Data Mata Pelajaran berhasil ditambahkan!');
+        return redirect()->route('wakasek.data-jadwalmapel')->with('success', 'Data Mata Pelajaran berhasil ditambahkan!');
     }
 
     /**
@@ -132,7 +142,7 @@ class MataPelajaranController extends Controller
             'kelas' => $request->kelas,
         ]);
 
-        return redirect()->route('data-mapel');
+        return redirect()->route('wakasek.data-periode');
     }
 
     /**
@@ -145,15 +155,17 @@ class MataPelajaranController extends Controller
     public function updatejadwalmapel(Request $request, $id_mata_pelajaran)
     {
         $request->validate([
+            'pengajar' => 'required|string|max:255',
             'jam' => 'required|string|max:255',
         ]);
 
         $mapel = MataPelajaran::findOrFail($id_mata_pelajaran);
         $mapel->update([
+            'pengajar' => $request->pengajar,
             'jam' => $request->jam,
         ]);
 
-        return redirect()->route('data-jadwalmapel');
+        return redirect()->route('wakasek.data-jadwalmapel');
     }
 
     /**
@@ -167,6 +179,6 @@ class MataPelajaranController extends Controller
         $mapel = MataPelajaran::findOrFail($id_mata_pelajaran);
         $mapel->delete();
 
-        return redirect()->route('list-mapel')->with('success', 'Pengajuan Beasiswa deleted successfully.');
+        return redirect()->route('wakasek.list-mapel')->with('success', 'Pengajuan Beasiswa deleted successfully.');
     }
 }

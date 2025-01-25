@@ -14,16 +14,15 @@ class CreateMataPelajaran extends Migration
     public function up()
     {
         Schema::create('mata_pelajaran', function (Blueprint $table) {
-            $table->string('id')->primary(); 
+            $table->string('id_mata_pelajaran')->primary(); 
             $table->string('id_periode'); 
             $table->string('nama_mata_pelajaran');
             $table->string('pengajar');
             $table->string('jam'); 
             $table->string('kelas'); 
-            $table->string('nilai'); 
             $table->timestamps();
 
-            $table->foreign('id_periode')->references('id')->on('periode')->onDelete('cascade');
+            $table->foreign('id_periode')->references('id_periode')->on('periode')->onDelete('cascade');
         });
     }
 

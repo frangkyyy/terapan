@@ -56,9 +56,9 @@ class LoginController extends Controller
         if ($isAdmin) {
             return '/admin/dashboard';
         } elseif ($isGuru) {
-            return '/guru/dashboard';
+            return '/guru/scores';
         } elseif ($isWakasek) {
-            return '/wakasek/dashboard';
+            return '/wakasek/datamapel';
         } elseif ($isSiswa) {
             return '/siswa/dashboard';
         }

@@ -22,7 +22,7 @@
             <div class="container-fluid">
                 <div class="card p-4">
                     <div class="card-body">
-                        <form action="{{ route('jadwalmapel-update', $mapel->id_mata_pelajaran) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('wakasek.jadwalmapel-update', $mapel->id_mata_pelajaran) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             {{--                            <div class="form-group">--}}
@@ -33,6 +33,10 @@
                             {{--                                <label for="id_periode">ID Periode</label>--}}
                             {{--                                <input type="text" name="id_periode" class="form-control" value="{{ $mapel->id_periode }}" required>--}}
                             {{--                            </div>--}}
+                            <div class="form-group">
+                                <label for="pengajar">Pengajar</label>
+                                <input type="text" name="pengajar" class="form-control" placeholder="Pengajar" required>
+                            </div>
                             <div class="form-group">
                                 <label for="jam">Jadwal</label>
                                 <input type="text" name="jam" class="form-control" value="{{ $mapel->jam }}" required>

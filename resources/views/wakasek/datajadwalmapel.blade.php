@@ -35,32 +35,58 @@
                     <div class="card-body">
                         <div class="card">
                             <div class="card-body">
-                                <table id="table-pb" class="table table-striped">
+
+                                <!-- Tombol untuk Periode -->
+                                <div class="form-group">
+                                    <label for="periode-buttons">Pilih Periode:</label>
+                                    <div id="periode-buttons" class="btn-group" role="group">
+                                        <button type="button" class="btn btn-outline-primary periode-button" data-periode="">
+                                            Semua Periode
+                                        </button>
+                                        @foreach($periodes as $periode)
+                                            <button type="button"
+                                                    class="btn btn-outline-primary periode-button"
+                                                    data-periode="{{ $periode->id_periode }}">
+                                                {{ $periode->id_periode }}
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <!-- Jadwal Mata Pelajaran -->
+                                <div class="card">
+                                    <div class="card-body">
+                                    <table id="table-pb" class="table table-striped">
                                     <thead>
                                     <tr>
                                         <th>Mata Pelajaran</th>
                                         <th>ID Mata Pelajaran</th>
-                                        <th>Pengajar</th>
+                                        <th>Periode</th>
+                                        <th>Guru</th>
                                         <th>Kelas</th>
                                         <th>Jadwal</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="mapel-table-body">
+                                    <div id="loading-spinner" style="display: none; text-align: center; font-weight: bold; margin: 20px 0;">
+                                        Loading...
+                                    </div>
                                     @foreach($mapels as $mapel)
-                                        <tr>
+                                        <tr data-periode="{{ $mapel->id_periode }}">
                                             <td>{{ $mapel->nama_mata_pelajaran }}</td>
                                             <td>{{ $mapel->id_mata_pelajaran }}</td>
+                                            <td>{{ $mapel->id_periode }}</td>
                                             <td>{{ $mapel->pengajar }}</td>
                                             <td>{{ $mapel->kelas }}</td>
                                             <td>{{ $mapel->jam }}</td>
                                             <td>
-                                                <a href="{{ route('jadwalmapel-edit', $mapel->id_mata_pelajaran) }}" class="btn btn-primary">Edit</a>
-                                                {{--                                                <form action="{{ route('mapel-destroy', $mapel->id_mata_pelajaran) }}" method="POST">--}}
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" data-confirm="Apakah anda yakin ingin menghapus data ini?">Delete</button>
-                                                </form>
+                                                <a href="{{ route('wakasek.jadwalmapel-edit', $mapel->id_mata_pelajaran) }}" class="btn btn-primary">Edit</a>
+                                                {{--                                                <form action="{{ route('wakasek.mapel-destroy', $mapel->id_mata_pelajaran) }}" method="POST">--}}
+{{--                                                @csrf--}}
+{{--                                                @method('DELETE')--}}
+{{--                                                <button type="submit" class="btn btn-danger btn-sm" data-confirm="Apakah anda yakin ingin menghapus data ini?">Delete</button>--}}
+{{--                                                </form>--}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -72,6 +98,8 @@
                 </div>
                 <!-- /.content -->
             </div>
+                </div>
+            </div>
             @endsection
 
             @section('ExtraCSS')
@@ -82,6 +110,33 @@
                 <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
                 <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
                 <script>
-                    $('#table-pb').DataTable();
+                    $(document).ready(function () {
+                        // Inisialisasi DataTables
+                        $('#table-pb').DataTable();
+
+                        // Filter data berdasarkan tombol periode
+                        $('.periode-button').on('click', function () {
+                            const selectedPeriode = $(this).data('periode');
+                            const rows = $('#mapel-table-body tr');
+
+                            // Toggle tombol aktif
+                            $('.periode-button').removeClass('active btn-primary').addClass('btn-outline-primary');
+                            $(this).addClass('active btn-primary').removeClass('btn-outline-primary');
+
+                            // Tampilkan baris berdasarkan periode yang dipilih
+                            rows.hide();
+                            if (selectedPeriode === '') {
+                                // Tampilkan semua baris jika "Semua Periode" dipilih
+                                rows.show();
+                            } else {
+                                rows.each(function () {
+                                    if ($(this).data('periode') === selectedPeriode) {
+                                        $(this).show();
+                                    }
+                                });
+                            }
+                        });
+                    });
+
                 </script>
 @endsection

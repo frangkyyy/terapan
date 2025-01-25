@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DataNilaiSiswa;
+use App\Models\User;
 
 class DataNilaiSiswaController extends Controller
 {
@@ -12,7 +13,8 @@ class DataNilaiSiswaController extends Controller
      */
     public function index()
     {
-        $dtDataNilaiSiswa = DataNilaiSiswa::all();
+        $dtDataNilaiSiswa = User::with('roles')->get();
+        $aaa = DataNilaiSiswa::all();
         return view('guru.DataNilaiSiswa', compact('dtDataNilaiSiswa'));
     }
 

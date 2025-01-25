@@ -11,4 +11,9 @@ class DataNilaiSiswa extends Model
     protected $primarykey = "id";
     protected $fillable = [
         'id','nama', 'kelas', 'nilai'];
+
+    // public function users()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 }

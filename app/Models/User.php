@@ -25,4 +25,8 @@ class User extends Authenticatable
         return $this->roles->contains('name', $role);
     }
 
+    public function mataPelajaran()
+    {
+        return $this->belongsToMany(MataPelajaran::class, 'mata_pelajaran_siswa', 'user_id', 'id_mata_pelajaran')->withPivot('periode_id')->withTimestamps();;
+    }
 }

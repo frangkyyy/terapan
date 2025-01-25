@@ -22,7 +22,7 @@
             <div class="container-fluid">
                 <div class="card p-4">
                     <div class="card-body">
-                        <form action="{{ route('mapel-update', $mapel->id_mata_pelajaran) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('wakasek.mapel-update', $mapel->id_mata_pelajaran) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 {{--                            <div class="form-group">--}}
